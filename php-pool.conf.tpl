@@ -1,0 +1,21 @@
+[php_{domain}]
+rlimit_files = 50000
+listen = /dev/shm/php_{domain}.sock
+user = {user}
+group = {user}
+listen.owner = {user}
+listen.group = {user}
+listen.mode = 766
+pm = ondemand
+pm.max_children = 5
+php_flag[display_errors] = off
+php_admin_value[error_log] = /home/{user}/{domain}/logs/php_error.log
+php_admin_flag[log_errors] = on
+php_admin_value[date.timezone] = Asia/Ho_Chi_Minh
+php_admin_value[upload_tmp_dir] = /tmp
+php_admin_value[memory_limit] = 64M
+php_admin_value[open_basedir] = /home/{user}/{domain}/public_html:/tmp
+php_admin_value[session.save_handler]=files
+php_admin_value[session.save_path]="/tmp"
+php_admin_value[upload_max_filesize] = 20M
+php_admin_value[post_max_size] = 20M
